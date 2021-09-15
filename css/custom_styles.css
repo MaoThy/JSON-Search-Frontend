@@ -1,3 +1,18 @@
+/* Transitions */
+
+h1 {
+    margin-left: -6px;
+    opacity: 0;
+}
+h4 {
+    margin-left: -4px;
+    opacity: 0;
+}
+
+.table-responsive {
+    opacity: 0;
+}
+
 .navbar-dark {
     background-color: #553D7A !important;
 }
