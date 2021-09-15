@@ -1,0 +1,32 @@
+.navbar-dark {
+    background-color: #553D7A !important;
+}
+.navbar-brand {
+    background-color: #553D7A !important;
+    padding: 10px;
+}
+.navbar {
+    opacity: 1;
+    display: visible;
+}
+.form-control {
+    background-color: white !important;
+    margin-left: 5px;
+}
+
+/* Dark mode */
+
+.dark {
+    color: white !important;
+    background-color: black !important;
+}
+.dark_buttons {
+    outline-color: white;
+    background-color: black;
+}
+.sign_out_dark {
+    background-color: black !important;
+}
+#sign_out {
+    background-color: #553D7A !important;
+}
