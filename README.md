@@ -6,6 +6,9 @@ The search function is invoked every time a key is pressed while the search bar 
 # Screenshots
 
 <img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/light_mode.png" style="max-width:650px"/>
+<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/project_view_light.png" style="max-width:650px"/>
+<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/project_view_dark.png" style="max-width:650px"/>
+<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/mobile_view.png" style="max-width:300px"/>
 
 ![Alt text](/screenshots/light_mode.png?raw=true "Optional Title")
 ![Alt text](/screenshots/project_view_light.png?raw=true "Optional Title")
