@@ -5,6 +5,8 @@ The search function is invoked every time a key is pressed while the search bar 
 
 # Screenshots
 
+<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/light_mode.png" style="width:100px; height:100px"/>
+
 ![Alt text](/screenshots/light_mode.png?raw=true "Optional Title")
 ![Alt text](/screenshots/project_view_light.png?raw=true "Optional Title")
 ![Alt text](/screenshots/project_view_dark.png?raw=true "Optional Title")
