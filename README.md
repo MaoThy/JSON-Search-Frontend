@@ -7,3 +7,5 @@ The search function is invoked every time a key is pressed while the search bar 
 
 ![Alt text](/screenshots/light_mode.png?raw=true "Optional Title")
 ![Alt text](/screenshots/project_view_light.png?raw=true "Optional Title")
+![Alt text](/screenshots/project_view_dark.png?raw=true "Optional Title")
+![Alt text](/screenshots/mobile_view.png?raw=true "Optional Title")
