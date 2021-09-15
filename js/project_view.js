@@ -75,7 +75,7 @@ class ProjectDataGetter {
         });
         return json_data;
     }
-    getProject(object_array){
+    getProject(object_array){ //Quality of code here is fantastic. Refactor old code in this way!
         object_array.forEach((current_object) => {
             if (current_object.project === this.project){
                 this.projectData = current_object;
