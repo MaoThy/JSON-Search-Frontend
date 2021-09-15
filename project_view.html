@@ -62,7 +62,7 @@ View Help
 
 <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4">
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-<h1 class="h2">Projects</h1>
+<h1 class="h2" id="project_name"></h1>
 <div class="btn-toolbar mb-2 mb-md-0">
 <div class="btn-group mr-2">
 <button id="theme_toggle" class="btn btn-sm btn-outline-secondary">Switch Theme</button>
@@ -70,6 +70,8 @@ View Help
 </div>
 </div>
 </div>
+
+<h2 class="h4">Project Info</h2>
 
 <div class="table-responsive">
 <table id="projects_table" class="table table-striped table-sm">
@@ -84,11 +86,16 @@ View Help
 <th>Urgency</th>
 </tr>
 </thead>
-<tbody id="table_body">
 
+<tbody id="table_body">
+<tr id="project_info_row">
+<!--Populated with JavaScript-->
+</tr>
 </tbody>
 </table>
+<h2 class="h4">Location</h2>
 </div>
+
 </main>
 </div>
 </div>
@@ -106,7 +113,7 @@ View Help
 feather.replace()
 </script>
 
-<script type="text/javascript" src="js/data_handler_and_search.js"></script>
+<script type="text/javascript" src="js/project_view.js"></script>
 <script type="text/javascript" src="js/theme_handler.js"></script>
 
 </body>

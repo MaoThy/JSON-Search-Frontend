@@ -12,3 +12,8 @@ js/._popper.min.js
 css/._.DS_Store
 css/._bootstrap.min.css
 css/._custom_styles.css
+._project_view.html
+js/._data.json
+js/._project_view.js
+js/._data_handler_and_search.js
+js/._theme_handler.js
