@@ -1,4 +1,6 @@
-/* Persistent theme handler - NOT YET WORKING */
+/* Persistent theme handler - NOT YET FULLY WORKING */
+
+/* No document ready function here on purpose. Theme should take effect as soon as possible! */
 
 class ThemeHandler {
     constructor(){
