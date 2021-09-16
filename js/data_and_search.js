@@ -68,7 +68,7 @@ class OutputAndSearch {
         return "<a href='project_view.html?project=" + project_name + "'>" + project_name + "</a>";
     }
     outputData(json_array, search_term){
-        json_array.forEach((json_object) => {
+        json_array.forEach((json_object) => { //Runs PER json object; translates to one row.
             if (search_term === undefined){
                 this.createRow(json_object);
             } else if (search_term != undefined){
