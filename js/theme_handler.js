@@ -34,7 +34,7 @@ class ThemeHandler {
             this.changeThemeSetting("dark");
         }
     }
-    changeThemeSetting(type){
+    changeThemeSetting(type){ //Redundant function, make part of changeTheme()
         if (type === "light"){
             localStorage.setItem("theme", "light");
             this.currentTheme = "light";
@@ -56,7 +56,7 @@ class ThemeHandler {
         }
     }
     obeyCurrentThemeSetting(){
-        if (this.current_setting === null){ //If no setting found, set light them as default
+        if (this.current_setting === null){ //If no setting found, set light theme as default
             var theme_setting = localStorage.setItem("theme", "light");
             return theme_setting;
         } else if (this.current_setting != null){
