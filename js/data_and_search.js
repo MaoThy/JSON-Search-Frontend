@@ -74,7 +74,7 @@ class OutputAndSearch {
             if (search_term === undefined){
                 this.createRow(json_object);
             } else if (search_term != undefined){
-                var array_to_search = this.objectToSearchableArray(json_object, search_term);
+                var array_to_search = this.objectToSearchableArray(json_object);
                 var search_type = this.getSearchType(search_term);
                 if (this.searchForWordInArray(array_to_search, search_term, search_type)){
                     this.createRow(json_object);
