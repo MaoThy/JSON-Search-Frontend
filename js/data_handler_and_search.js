@@ -28,11 +28,11 @@ class OutputTableData {
     createRow(element){
         var table_body = document.getElementById("table_body");
         var tr = document.createElement("tr");
-        Object.values(element).forEach((val, index) => { // 'Value' is the value of the object inside the current array element – a single entry.
+        Object.values(element).forEach((val, index) => {
         var td = document.createElement("td");
-        if (index === 0) { //First loop makes the first value ('Projects') a link.
+        if (index === 0) {
             td.innerHTML = "<a href='project_view.html?project=" + val + "'>" + val + "</a>";
-        } else if (index === 5 && val === "High") { //Index 5 = Urgency
+        } else if (index === 5 && val === "High") {
             td.innerHTML = val.fontcolor("red");
         } else {
             td.innerHTML = val;
