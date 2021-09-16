@@ -6,7 +6,7 @@ class OutputAndSearch {
     constructor(){
         this.json_array = this.loadJSON();
         this.outputData(this.json_array);
-        this.searchMode = false;
+        this.json_keys = this.getJSONKeys(this.json_array[0]);
         this.bindSearchBarListeners();
     }
     loadJSON(){
@@ -20,6 +20,10 @@ class OutputAndSearch {
             }
         });
         return json_data;
+    }
+    getJSONKeys(json_object){
+        var key_array = Object.keys(json_object);
+        return key_array;
     }
     bindSearchBarListeners(){
         $("#searchbar").keyup((e) => {
@@ -35,10 +39,20 @@ class OutputAndSearch {
         });
     }
     getSearchType(search_term){
-        if (search_term.indexOf("exact:") === -1){
+        if (search_term.indexOf(":") === -1){
+            console.log("normal");
             return "normal";
         } else if (search_term.indexOf("exact:") != -1){
+            console.log("exact");
             return "exact";
+        } else {
+            var search_key;
+            this.json_keys.forEach((key) => {
+                if (search_term.indexOf(key) != -1){
+                    search_key = key;
+                }
+            });
+            return search_key;
         }
     }
     objectToSearchableArray(json_object){
@@ -63,19 +77,31 @@ class OutputAndSearch {
                     found = true;
                 }
             });
+        } else if (this.json_keys.includes(search_type)){
+            //Now, you need to add an exact match function for column search
+            var colon_index = search_term.indexOf(":");
+            var key = search_term.substring(0, colon_index);
+            var value = search_term.substring((colon_index + 1), 
+                                                search_term.length);
+            var key_position = this.json_keys.indexOf(key);
+            var object_value_to_search = object_values_array[key_position];
+            if (object_value_to_search.indexOf(value) != -1){
+                found = true;
+            }
         }
         return found;
     }
     getProjectLink(project_name){
-        return "<a href='project_view.html?project=" + project_name + "'>" + project_name + "</a>";
+        return "<a href='project_view.html?project=" + 
+            project_name + "'>" + project_name + "</a>";
     }
     outputData(json_array, search_term){
         json_array.forEach((json_object) => { //Runs PER json object; translates to one row.
             if (search_term === undefined){
                 this.createRow(json_object);
             } else if (search_term != undefined){
-                var array_to_search = this.objectToSearchableArray(json_object);
                 var search_type = this.getSearchType(search_term);
+                var array_to_search = this.objectToSearchableArray(json_object);
                 if (this.searchForWordInArray(array_to_search, search_term, search_type)){
                     this.createRow(json_object);
                 }
