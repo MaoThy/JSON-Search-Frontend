@@ -1,5 +1,7 @@
 $("document").ready(function(){
 
+/* This class outputs table rows per JSON object. Data is expected to come in as an ARRAY of JSON objects, each of which will become a table row. Also provides search functionality by finding partial or exact matches inside the values of JSON objects. */
+
 class OutputAndSearch {
     constructor(){
         this.json_array = this.loadJSON();
@@ -33,7 +35,7 @@ class OutputAndSearch {
         });
     }
     getSearchType(search_term){
-        if (search_term.indexOf("exact:") === -1){ //If first character typed is NOT a quote
+        if (search_term.indexOf("exact:") === -1){
             return "normal";
         } else if (search_term.indexOf("exact:") != -1){
             return "exact";
