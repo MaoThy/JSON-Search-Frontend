@@ -39,13 +39,13 @@ class OutputAndSearch {
         });
     }
     getSearchType(search_term){
-        if (search_term.indexOf(":") === -1){
-            console.log("normal");
-            return "normal";
-        } else if (search_term.indexOf("exact:") != -1){
-            console.log("exact");
+        if (search_term.charAt(0) === '"'){ //First quote marks the start of exact match search
             return "exact";
-        } else {
+        } else if (search_term.indexOf(":") === -1){ //Normal search
+            return "normal";
+        } else if (search_term.indexOf(':"') != -1){ //Column search, exact match
+            return "column_exact";
+        } else { //Column search
             var search_key;
             this.json_keys.forEach((key) => {
                 if (search_term.indexOf(key) != -1){
@@ -62,6 +62,19 @@ class OutputAndSearch {
         });
         return object_array;
     }
+    getColumnSearchParts(search_term){
+        //Called when searching data by column/JSON key
+        var colon_index = search_term.indexOf(":");
+        var key = search_term.substring(0, colon_index);
+        var value = search_term.substring((colon_index + 1), search_term.length);
+        var key_position = this.json_keys.indexOf(key);
+        var search_query_object = {
+            column: key, 
+            query: value,
+            key_array_index: key_position
+            };
+        return search_query_object;
+    }
     searchForWordInArray(object_values_array, search_term, search_type){
         var found = false;
         var search_term = search_term.toLowerCase();
@@ -71,25 +84,34 @@ class OutputAndSearch {
                     found = true;
                 }
             });
-        } else if (search_type === "exact"){
-            object_values_array.forEach((current_item) => {
-                if (current_item === search_term.substring(6)){
+        } else if (search_type === "exact") {
+            if (search_term.charAt(0) === '"' && search_term.charAt(search_term.length - 1) === '"'){
+                var search_parts = this.getColumnSearchParts(search_term);
+                search_term = search_term.replaceAll('"', "");
+                object_values_array.forEach((current_item) => {
+                    if (current_item === search_term){
+                        found = true;
+                    }
+                });
+            }
+        } else if (this.json_keys.includes(search_type)){ //If search is for a json object key
+            var search_parts = this.getColumnSearchParts(search_term);
+            var object_value_to_search = object_values_array[search_parts.key_array_index];
+            if (object_value_to_search.indexOf(search_parts.query) != -1){
+                found = true;
+            }
+        } else if (search_type === "column_exact"){ //Searches for exact match within a column
+            var search_parts = this.getColumnSearchParts(search_term);
+            var object_value_to_search = object_values_array[search_parts.key_array_index];
+            if (search_term.charAt(search_term.length - 1) === '"'){ //Already know it starts with a quote because that's how this function gets invoked
+                search_parts.query = search_parts.query.replaceAll('"', "");
+                if (object_value_to_search.indexOf(search_parts.query) != -1){
                     found = true;
                 }
-            });
-        } else if (this.json_keys.includes(search_type)){
-            //Now, you need to add an exact match function for column search
-            var colon_index = search_term.indexOf(":");
-            var key = search_term.substring(0, colon_index);
-            var value = search_term.substring((colon_index + 1), 
-                                                search_term.length);
-            var key_position = this.json_keys.indexOf(key);
-            var object_value_to_search = object_values_array[key_position];
-            if (object_value_to_search.indexOf(value) != -1){
-                found = true;
             }
         }
         return found;
+        //Now, you need to add an exact match function for column search
     }
     getProjectLink(project_name){
         return "<a href='project_view.html?project=" + 
