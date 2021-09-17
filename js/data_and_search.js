@@ -62,8 +62,7 @@ class OutputAndSearch {
         });
         return object_array;
     }
-    getColumnSearchParts(search_term){
-        //Called when searching data by column/JSON key
+    getColumnSearchParts(search_term){ //Called when searching data by column/JSON key
         var colon_index = search_term.indexOf(":");
         var key = search_term.substring(0, colon_index);
         var value = search_term.substring((colon_index + 1), search_term.length);
@@ -105,7 +104,7 @@ class OutputAndSearch {
             var object_value_to_search = object_values_array[search_parts.key_array_index];
             if (search_term.charAt(search_term.length - 1) === '"'){ //Already know it starts with a quote because that's how this function gets invoked
                 search_parts.query = search_parts.query.replaceAll('"', "");
-                if (object_value_to_search.indexOf(search_parts.query) != -1){
+                if (object_value_to_search === search_parts.query){
                     found = true;
                 }
             }
