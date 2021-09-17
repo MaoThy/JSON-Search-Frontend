@@ -20,10 +20,6 @@ h1 {
     margin-left: -6px;
     opacity: 0;
 }
-.nav-link {
-    margin-left: -8px;
-    opacity: 0;
-}
 
 .navbar-dark {
     background-color: #553D7A !important;
@@ -42,7 +38,6 @@ h1 {
 }
 
 /* Dark mode */
-
 .dark {
     color: white !important;
     background-color: black !important;
@@ -56,4 +51,14 @@ h1 {
 }
 #sign_out {
     background-color: #553D7A !important;
+}
+#searchbar {
+    z-index: 100;
+}
+.searchbar-dark {
+    background-color: rgb(45, 45, 45) !important;
+    z-index: 100;
+}
+.searchbar-dark:focus {
+    outline: 2px solid rgb(181, 181, 181);
 }

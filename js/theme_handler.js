@@ -5,7 +5,7 @@
 class ThemeHandler {
     constructor(){
         this.theme_affected_elements = 
-            "#projects_table, td, th, nav, .form-control, .sidebar, a, body, button, #sign_out";
+            "#projects_table, td, th, nav, .form-control, .sidebar, .navbar-brand, body, button, #sign_out, .nav-link, .px-3, .navbar-dark";
         this.bindDarkModeButton();
         this.current_setting = localStorage.getItem("theme");
         this.current_theme = this.getCurrentThemeSetting();
@@ -17,9 +17,10 @@ class ThemeHandler {
         });
     }
     toggleTheme(){
-        if (this.current_theme === "light"){
+        var current_theme = localStorage.getItem("theme");
+        if (current_theme === "light"){
             this.changeTheme("dark");
-        } else if (this.current_theme === "dark"){
+        } else if (current_theme === "dark"){
             this.changeTheme("light");
         } else {
             this.changeTheme("light");
@@ -28,19 +29,12 @@ class ThemeHandler {
     changeTheme(type){
         if (type === "light"){
             $(this.theme_affected_elements).removeClass("dark");
-            this.changeThemeSetting("light");
+            $("#searchbar").removeClass("searchbar-dark");
+            localStorage.setItem("theme", "light");
         } else if (type === "dark"){
             $(this.theme_affected_elements).addClass("dark");
-            this.changeThemeSetting("dark");
-        }
-    }
-    changeThemeSetting(type){ //Redundant function, make part of changeTheme()
-        if (type === "light"){
-            localStorage.setItem("theme", "light");
-            this.currentTheme = "light";
-        } else if (type === "dark"){
+            $("#searchbar").addClass("searchbar-dark");
             localStorage.setItem("theme", "dark");
-            this.currentTheme = "dark";
         }
     }
     getCurrentThemeSetting(){

@@ -3,7 +3,7 @@ $("document").ready(function(){
 class Transitions {
     constructor(){
         this.entryAnimations();
-        this.animate_opacity = ".table-responsive, h1, h4, h6, .nav-link";
+        this.animate_opacity = ".table-responsive, h1, h4, h6";
         this.animate_margin = ".table-responsive, h1, h4, h6, .nav-link";
     }
     entryAnimations(){
