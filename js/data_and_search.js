@@ -76,7 +76,7 @@ class OutputAndSearch {
         return search_query_object;
     }
     searchForWordInArray(object_values_array, search_term, search_type){
-        var found = false;
+        var found = false; // Only if this function returns found = true will row get outputted
         var search_term = search_term.toLowerCase();
         if (search_type === "normal"){
             object_values_array.forEach((current_item) => {
