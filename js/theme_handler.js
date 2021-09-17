@@ -1,4 +1,4 @@
-/* Persistent theme handler - NOT YET FULLY WORKING */
+/* Persistent theme handler */
 
 /* No document ready function here on purpose. Theme should take effect as soon as possible! */
 
