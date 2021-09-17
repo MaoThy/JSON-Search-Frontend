@@ -42,6 +42,10 @@ h1 {
     color: white !important;
     background-color: black !important;
 }
+.dark a {
+    color: white !important;
+    text-decoration: underline;
+}
 .dark_buttons {
     outline-color: white;
     background-color: black;
