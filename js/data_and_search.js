@@ -111,7 +111,6 @@ class OutputAndSearch {
             }
         }
         return found;
-        //Now, you need to add an exact match function for column search
     }
     getProjectLink(project_name){
         return "<a href='project_view.html?project=" + 
