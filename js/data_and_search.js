@@ -116,19 +116,6 @@ class OutputAndSearch {
         return "<a href='project_view.html?project=" + 
             project_name + "'>" + project_name + "</a>";
     }
-    outputData(json_array, search_term){
-        json_array.forEach((json_object) => { //Runs PER json object; translates to one row.
-            if (search_term === undefined){
-                this.createRow(json_object);
-            } else if (search_term != undefined){
-                var search_type = this.getSearchType(search_term);
-                var array_to_search = this.objectToSearchableArray(json_object);
-                if (this.searchForWordInArray(array_to_search, search_term, search_type)){
-                    this.createRow(json_object);
-                }
-            }
-        });
-    }
     createRow(json_object){
         var tr = document.createElement("tr");
         $("#table_body").append(tr);
@@ -145,6 +132,19 @@ class OutputAndSearch {
                 }
             }
             $("#table_body").append(td);
+        });
+    }
+    outputData(json_array, search_term){
+        json_array.forEach((json_object) => { //Runs PER json object; translates to one row.
+            if (search_term === undefined){
+                this.createRow(json_object);
+            } else if (search_term != undefined){
+                var search_type = this.getSearchType(search_term);
+                var array_to_search = this.objectToSearchableArray(json_object);
+                if (this.searchForWordInArray(array_to_search, search_term, search_type)){
+                    this.createRow(json_object);
+                }
+            }
         });
     }
 }
