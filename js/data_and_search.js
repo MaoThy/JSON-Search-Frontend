@@ -95,13 +95,13 @@ class OutputAndSearch {
             }
         } else if (this.json_keys.includes(search_type)){ //If search is for a json object key
             var search_parts = this.getColumnSearchParts(search_term);
-            var object_value_to_search = object_values_array[search_parts.key_array_index];
+            var object_value_to_search = object_values_array[search_parts.key_array_index]; //Gets the array entry that correponds to the searched-for json
             if (object_value_to_search.indexOf(search_parts.query) != -1){
                 found = true;
             }
         } else if (search_type === "column_exact"){ //Searches for exact match within a column
             var search_parts = this.getColumnSearchParts(search_term);
-            var object_value_to_search = object_values_array[search_parts.key_array_index];
+            var object_value_to_search = object_values_array[search_parts.key_array_index]; //Gets the array entry that correponds to the searched-for json
             if (search_term.charAt(search_term.length - 1) === '"'){ //Already know it starts with a quote because that's how this function gets invoked
                 search_parts.query = search_parts.query.replaceAll('"', "");
                 if (object_value_to_search === search_parts.query){
@@ -112,8 +112,7 @@ class OutputAndSearch {
         return found;
     }
     getProjectLink(project_name){
-        return "<a href='project_view.html?project=" + 
-            project_name + "'>" + project_name + "</a>";
+        return "<a href='project_view.html?project=" + project_name + "'>" + project_name + "</a>";
     }
     createRow(json_object){
         var tr = document.createElement("tr");
