@@ -3,6 +3,8 @@ This is an interface for displaying information from an array of JSON objects. I
 
 The search function is invoked every time a key is pressed while the search bar is in focus, resulting in a very responsive-feeling interface. The program will load JSON data from an external source (like an API) and then it will use JavaScript to create the table rows. It uses a custom Bootstrap theme and is fully responsive. It also includes a dark theme that can be toggled with a button at the top.
 
+I wrote this program as an alternative to using the DataTables framework, something I found so inscrutable it gave me a migraine.
+
 # Features
 
 - Partial search – search for entries in the JSON data by just typing a few letters into the search bar. Any entries that contain those letters will be immediately returned as rows inside the interface. All searches are case-insensitive, meaning that typing, for example, 'bankstown' will return entries that contain 'Bankstown'.
