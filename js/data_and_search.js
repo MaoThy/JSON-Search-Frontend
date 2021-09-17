@@ -63,7 +63,7 @@ class OutputAndSearch {
         });
         return object_array;
     }
-    getColumnSearchParts(search_term){ //Called when searching data by column/JSON key
+    getSearchQueryParts(search_term){ //Called when searching data by column/JSON key
         var colon_index = search_term.indexOf(":");
         var key = search_term.substring(0, colon_index);
         var value = search_term.substring((colon_index + 1), search_term.length);
@@ -86,7 +86,7 @@ class OutputAndSearch {
             });
         } else if (search_type === "exact") {
             if (search_term.charAt(0) === '"' && search_term.charAt(search_term.length - 1) === '"'){
-                var search_parts = this.getColumnSearchParts(search_term); //Returns an object containing individual parts of the search query
+                var search_parts = this.getSearchQueryParts(search_term); //Returns an object containing individual parts of the search query
                 search_term = search_term.replaceAll('"', "");
                 object_values_array.forEach((current_item) => {
                     if (current_item === search_term){
@@ -95,13 +95,13 @@ class OutputAndSearch {
                 });
             }
         } else if (this.json_keys.includes(search_type)){ //If search is for a json object key
-            var search_parts = this.getColumnSearchParts(search_term);  //Returns an object containing individual parts of the search query
+            var search_parts = this.getSearchQueryParts(search_term);  //Returns an object containing individual parts of the search query
             var object_value_to_search = object_values_array[search_parts.key_array_index]; //Gets the array entry that correponds to the searched-for json key
             if (object_value_to_search.indexOf(search_parts.query) != -1){
                 found = true;
             }
         } else if (search_type === "column_exact"){ //Searches for exact match within a column
-            var search_parts = this.getColumnSearchParts(search_term);
+            var search_parts = this.getSearchQueryParts(search_term);
             var object_value_to_search = object_values_array[search_parts.key_array_index]; //Gets the array entry that correponds to the searched-for json key
             if (search_term.charAt(search_term.length - 1) === '"'){ //Already know it starts with a quote because that's how this function gets invoked
                 search_parts.query = search_parts.query.replaceAll('"', "");
