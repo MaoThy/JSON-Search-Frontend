@@ -8,6 +8,7 @@ class OutputAndSearch {
         this.outputData(this.json_array);
         this.json_keys = this.getJSONKeys(this.json_array[0]);
         this.bindSearchBarListeners();
+        this.bindExportButton();
     }
     loadJSON(){
         var json_data = [];
@@ -143,6 +144,11 @@ class OutputAndSearch {
                     this.createRow(json_object);
                 }
             }
+        });
+    }
+    bindExportButton(){
+        $("#export_view").click(function(){
+            alert("Function not yet available!");
         });
     }
 }
