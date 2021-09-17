@@ -11,6 +11,7 @@ The search function is invoked every time a key is pressed while the search bar 
 - Exact match search inside column – search for an exact (case-insensitive) match to an entry inside a specific table column using the following syntax: column_name:"query".
 - A detailed project view that pulls information from JSON data and uses it to populate a screen specific to that project. This view automatically generates a Google map based on the location entry in the JSON data.
 - Persistent theme – the application will remember your choice of theme across all pages and visits by storing your theme choice as a localStorage item.
+- Responsive interface and smooth transitions – view JSON data on a massive desktop or a tiny phone, and enjoy smooth animations between transitions using the custom Bootstrap interface.
 
 # Screenshots
 
