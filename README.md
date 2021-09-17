@@ -15,6 +15,8 @@ I wrote this program as an alternative to using the DataTables framework, someth
 - Persistent theme – the application will remember your choice of theme across all pages and visits by storing your theme choice as a localStorage item.
 - Responsive interface and smooth transitions – view JSON data on a massive desktop or a tiny phone, and enjoy smooth animations between transitions using the custom Bootstrap interface.
 
+Note: This program will only search JSON objects that have one layer of depth, i.e. one array containing JSON objects, which contain key value pairs. It will not work with nested JSON objects.
+
 # Screenshots
 
 <img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/light_mode.png" style="max-width:650px"/>

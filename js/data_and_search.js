@@ -6,7 +6,7 @@ class OutputAndSearch {
     constructor(){
         this.json_array = this.loadJSON();
         this.outputData(this.json_array);
-        this.json_keys = this.getJSONKeys(this.json_array[0]);
+        this.json_keys = this.getJSONKeys(this.json_array[0]); //Use this as an alternative to hard-coded headings
         this.bindSearchBarListeners();
         this.bindExportButton();
     }
