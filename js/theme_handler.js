@@ -33,7 +33,7 @@ class ThemeHandler {
             localStorage.setItem("theme", "light");
         } else if (type === "dark"){
             $(this.theme_affected_elements).addClass("dark");
-            $("#searchbar").addClass("searchbar-dark");
+            $("#searchbar").addClass("searchbar-dark"); //Need to add disabled mode in dark mode somehow
             localStorage.setItem("theme", "dark");
         }
     }

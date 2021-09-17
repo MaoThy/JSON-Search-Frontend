@@ -66,3 +66,10 @@ h1 {
 .searchbar-dark:focus {
     outline: 2px solid rgb(181, 181, 181);
 }
+#searchbar:disabled {
+    background-color: rgb(225, 225, 225) !important;
+    color: rgb(238, 238, 238) !important;
+}
+.searchbar-dark:disabled {
+    background-color: rgb(21, 21, 21) !important;
+}
