@@ -58,6 +58,9 @@ class ProjectDataGetter {
         this.project = query.getvaluefromkey("project");
         this.currentData = this.loadJSON();
         this.projectData = [];
+        this.json_keys = this.getJSONKeys(this.currentData[0]);
+        console.log(this.json_keys);
+        this.outputKeysAsTableHeadings(this.json_keys);
         this.getProject(this.currentData);
         this.populatePage(this.projectData);
         console.log(this.projectData);
@@ -74,6 +77,18 @@ class ProjectDataGetter {
             }
         });
         return json_data;
+    }
+    getJSONKeys(json_object){ //Used to output headings
+        var key_array = Object.keys(json_object);
+        return key_array;
+    }
+    outputKeysAsTableHeadings(json_keys){
+        json_keys.forEach((element) => {
+            var th = document.createElement("th");
+            var heading = element.charAt(0).toUpperCase() + element.substring(1);
+            th.innerHTML = heading;
+            $("#headings_row").append(th);
+        });
     }
     getProject(object_array){ //Quality of code here is fantastic. Refactor old code in this way
         object_array.forEach((current_object) => { //Don't forget to terminate the loop so it doesn't waste time looping through entire giant json
