@@ -19,7 +19,8 @@ Note: This program will only search JSON objects that have one layer of depth, i
 
 # Screenshots
 
-<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/light_mode.png" style="max-width:650px"/>
+<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/unfiltered_view.png" style="max-width:650px"/>
+<img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/datepicker.png" style="max-width:650px"/>
 <img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/project_view_light.png" style="max-width:650px"/>
 <img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/project_view_dark.png" style="max-width:650px"/>
 <img src="https://github.com/jm11116/JSON-Search-Frontend/blob/main/screenshots/mobile_view.png" style="max-width:100px"/>
