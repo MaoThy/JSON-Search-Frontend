@@ -72,7 +72,7 @@ class OutputAndSearch {
     searchForDate(json_array, date){
         $("#table_body").empty();
         json_array.forEach((json_object) => {
-            if (json_object["start date"].includes(date)){
+            if (json_object["start date"].includes(date)){ //It's weird that includes() is returning partial dates. Don't look a gift horse in the mouth, but could that be?
                 this.createRow(json_object);
             }
         });
