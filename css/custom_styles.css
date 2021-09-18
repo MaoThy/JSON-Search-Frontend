@@ -93,3 +93,8 @@ h1 {
         display: none;
     }
 }
+@media only screen and (max-width: 768px){
+    #searchbar {
+        margin-right: 5.6px;
+    }
+}
