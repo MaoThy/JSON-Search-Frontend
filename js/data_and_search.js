@@ -52,7 +52,7 @@ class OutputAndSearch {
     }
     bindDatePickerListeners(){
         $("#datepicker").datepicker();
-        $("#datepicker").change(() =>{
+        $("#datepicker").change(() => { //Couldn't return value from datepicker onSelect, so I just make the search function run whenever the input value changes
             this.searchForDate(this.json_array, $("#datepicker").val());
         });
         $("#datepicker").keyup((e) => {
