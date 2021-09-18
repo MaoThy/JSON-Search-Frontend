@@ -83,9 +83,9 @@ class ProjectDataGetter {
         return key_array;
     }
     outputKeysAsTableHeadings(json_keys){
-        json_keys.forEach((element) => {
+        json_keys.forEach((key) => {
             var th = document.createElement("th");
-            var heading = element.charAt(0).toUpperCase() + element.substring(1);
+            var heading = key.charAt(0).toUpperCase() + key.substring(1);
             th.innerHTML = heading;
             $("#headings_row").append(th);
         });
