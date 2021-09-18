@@ -387,9 +387,9 @@ a.ui-button:active,
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border: 1px solid #dad55e;
-	background: #fffa90;
-	color: #777620;
+	border: 1px solid #553D7A;
+	background: #553D7A;
+	color: #ffffff;
 }
 .ui-state-checked {
 	border: 1px solid #dad55e;
