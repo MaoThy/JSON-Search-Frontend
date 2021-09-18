@@ -73,3 +73,17 @@ h1 {
 .searchbar-dark:disabled {
     background-color: rgb(21, 21, 21) !important;
 }
+.input-group {
+    margin-top: 10px;
+}
+#main_heading {
+    margin-right: 180px;
+}
+#datepicker {
+    color: black;
+    font-size: 1em;
+}
+#datepicker a:link {
+    color: black;
+    font-size: 1em;
+}

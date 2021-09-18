@@ -7,7 +7,9 @@ class OutputAndSearch {
         this.json_array = this.loadJSON();
         this.outputData(this.json_array);
         this.json_keys = this.getJSONKeys(this.json_array[0]); //Use this as an alternative to hard-coded headings
+        this.outputKeysAsTableHeadings(this.json_keys);
         this.bindSearchBarListeners();
+        this.bindDatePickerListeners();
         this.bindExportButton();
     }
     loadJSON(){
@@ -26,6 +28,14 @@ class OutputAndSearch {
         var key_array = Object.keys(json_object);
         return key_array;
     }
+    outputKeysAsTableHeadings(json_keys){
+        json_keys.forEach((element) => {
+            var th = document.createElement("th");
+            var heading = element.charAt(0).toUpperCase() + element.substring(1);
+            th.innerHTML = heading;
+            $("#headings_row").append(th);
+        });
+    }
     bindSearchBarListeners(){
         $("#searchbar").keyup((e) => {
             if ($("#searchbar").val() === ""){
@@ -36,6 +46,34 @@ class OutputAndSearch {
                 $("#table_body").empty();
                 this.outputData(this.json_array, $("#searchbar").val());
                 $("#searchbar").submit();
+            }
+            $("#datepicker").val("");
+        });
+    }
+    bindDatePickerListeners(){
+        $("#datepicker").datepicker();
+        $("#datepicker").change(() =>{
+            this.searchForDate(this.json_array, $("#datepicker").val());
+        });
+        $("#datepicker").keyup((e) => {
+            var code = e.keyCode || e.which; //Get code of pressed keyboard key
+            if ($("#datepicker").val() != ""){
+                this.searchForDate(this.json_array, $("#datepicker").val());
+            } else if (code == 8){ //8 = backspace/delete
+                $("#table_body").empty(); //Prevents bug in which last search entry appeared at top of cleared list as a duplicate
+                $("#datepicker").empty();
+                this.outputData(this.json_array);     
+            } else {
+                $("#datepicker").empty();
+                this.outputData(this.json_array);
+            }
+        });
+    }
+    searchForDate(json_array, date){
+        $("#table_body").empty();
+        json_array.forEach((json_object) => {
+            if (json_object["start date"].includes(date)){
+                this.createRow(json_object);
             }
         });
     }

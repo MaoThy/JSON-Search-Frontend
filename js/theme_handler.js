@@ -5,7 +5,7 @@
 class ThemeHandler {
     constructor(){
         this.theme_affected_elements = 
-            "#projects_table, td, th, nav, .form-control, .sidebar, .navbar-brand, body, button, #sign_out, .nav-link, .px-3, .navbar-dark";
+            "#projects_table, td, th, nav, .form-control, .sidebar, .navbar-brand, main, button, #sign_out, .nav-link, .px-3, .navbar-dark";
         this.bindDarkModeButton();
         this.current_setting = localStorage.getItem("theme");
         this.current_theme = this.getCurrentThemeSetting();
@@ -29,11 +29,13 @@ class ThemeHandler {
     changeTheme(type){
         if (type === "light"){
             $(this.theme_affected_elements).removeClass("dark");
-            $("#searchbar").removeClass("searchbar-dark");
+            $("#searchbar, #datepicker").removeClass("searchbar-dark");
+            $("body").css("background-color", "white");
             localStorage.setItem("theme", "light");
         } else if (type === "dark"){
             $(this.theme_affected_elements).addClass("dark");
-            $("#searchbar").addClass("searchbar-dark"); //Need to add disabled mode in dark mode somehow
+            $("#searchbar, #datepicker").addClass("searchbar-dark");
+            $("body").css("background-color", "black"); //Can't set dark class on body because it also changes the font color to white, changing all the dates in the datepicker to white, too. Could change this by making a dark background and white text independent dark mode classes that can be more selectively applied.
             localStorage.setItem("theme", "dark");
         }
     }
