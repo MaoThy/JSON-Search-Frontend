@@ -15,7 +15,7 @@ A future version of the program will remove as much jQuery as possible, since mo
 - Exact match search inside column – search for an exact (case-insensitive) match to an entry inside a specific table column using the following syntax: column_name:"query".
 - Search by date by either typing your query or using the datepicker dropdown.
 - A detailed project view that pulls information from JSON data and uses it to populate a screen specific to that project. This view automatically generates a Google map based on the location entry in the JSON data.
-- HTML export option - export the current search view as a nicely layed-out HTML document with just the click of a button.
+- HTML export option - export the current search view as a nicely layed-out HTML document with just the click of a button. A future version will include a random value set as a localStorage item to ensure that only export requests that are coming from inside the application will be considered valid.
 - Persistent theme – the application will remember your choice of theme across all pages and visits by storing your theme choice as a localStorage item.
 - Responsive interface and smooth transitions – view JSON data on a massive desktop or a tiny phone, and enjoy smooth animations between transitions using the custom Bootstrap interface.
 
