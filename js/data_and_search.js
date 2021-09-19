@@ -184,13 +184,13 @@ class OutputAndSearch {
         json_array.forEach((json_object) => { //Runs PER json object; translates to one row.
             if (search_term === undefined){
                 this.createRow(json_object);
-                json_export_keys.push(json_object["project"]);
+                json_export_keys.push(json_object["project"]); //Push keys of outputted projects to array for export
             } else if (search_term != undefined){
                 var search_type = this.getSearchType(search_term);
                 var array_to_search = this.objectToSearchableArray(json_object);
                 if (this.searchForWordInArray(array_to_search, search_term, search_type)){
                     this.createRow(json_object);
-                    json_export_keys.push(json_object["project"]);
+                    json_export_keys.push(json_object["project"]); //Push keys of outputted projects to array for export
                 }
             }
         });
@@ -201,7 +201,7 @@ class OutputAndSearch {
         this.json_export_keys.forEach((key_in_array) => {
             query_string = query_string + key_in_array + "+";
         });
-        return query_string.substring(0, (query_string.length - 1)).replaceAll("undefined", "");
+        return query_string.substring(0, (query_string.length - 1)).replaceAll("undefined", ""); //Removes undefined entries from returned query string and removes the + on the end that shouldn't be there
     }
     bindExportButton(){
         $("#export_view").click(() => {
