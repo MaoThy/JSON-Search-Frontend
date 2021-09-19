@@ -205,9 +205,9 @@ class OutputAndSearch {
     bindExportButton(){
         $("#export_view").click(() => {
             if ($("#searchbar").val() === ""){
-                window.open(window.location.href + "export.html?filename=" + "all_data" + "&projects=" + this.exportKeysToQueryString(), "_blank");
+                window.open(window.location.href.replace("index.html", "") + "export.html?filename=" + "all_data" + "&projects=" + this.exportKeysToQueryString(), "_blank");
             } else {
-                window.open(window.location.href + 
+                window.open(window.location.href.replace("index.html", "") + 
                     "export.html?filename=" + $("#searchbar").val().replaceAll('"', "").replaceAll(":", "_") + "&projects=" + this.exportKeysToQueryString(), "_blank");     
             }
         });
