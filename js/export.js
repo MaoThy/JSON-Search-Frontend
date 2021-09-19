@@ -103,9 +103,9 @@ class Exporter {
         this.downloadHTML();
     }
     downloadHTML(){
-        var hiddenElement = document.createElement('a');
-        hiddenElement.href = 'data:attachment/text,' + encodeURI(document.documentElement.outerHTML);
-        hiddenElement.target = '_blank';
+        var hiddenElement = document.createElement("a");
+        hiddenElement.href = "data:attachment/text," + encodeURI(document.documentElement.outerHTML);
+        hiddenElement.target = "_blank";
         hiddenElement.download = this.file_name + ".html";
         hiddenElement.click();
     }
