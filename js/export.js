@@ -102,12 +102,12 @@ class Exporter {
         });
         this.downloadHTML();
     }
-    downloadHTML(){
+    downloadHTML(){ //Creates a download link that's never appended to document, i.e. remains hidden
         var hiddenElement = document.createElement("a");
         hiddenElement.href = "data:attachment/text," + encodeURI(document.documentElement.outerHTML);
         hiddenElement.target = "_blank";
         hiddenElement.download = this.file_name + ".html";
-        hiddenElement.click();
+        hiddenElement.click(); //Simulates download link click
     }
     createRow(json_object){
         var tr = document.createElement("tr");
