@@ -56,7 +56,9 @@ class OutputAndSearch {
         $("#datepicker").change(() => { //Couldn't return value from datepicker onSelect, so I just make the search function run whenever the input value changes
             this.searchForDate(this.json_array, $("#datepicker").val());
             $("#searchbar").val($("#datepicker").val()); //So can be used as export filenames
-            this.json_export_keys = [$("#datepicker").val()];
+            if ($("#datepicker").val() != ""){
+                this.json_export_keys = [$("#datepicker").val()];
+            }
         });
         $("#datepicker").keyup((e) => {
             var code = e.keyCode || e.which; //Get code of pressed keyboard key
@@ -66,8 +68,7 @@ class OutputAndSearch {
             } else if (code == 8){ //8 = backspace/delete
                 $("#table_body").empty(); //Prevents bug in which last search entry appeared at top of cleared list as a duplicate
                 $("#datepicker").empty();
-                this.outputData(this.json_array); 
-                this.json_export_keys = [$("#datepicker").val()];
+                this.outputData(this.json_array);
             } else {
                 $("#datepicker").empty();
                 this.outputData(this.json_array);
