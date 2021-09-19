@@ -11,6 +11,7 @@ class OutputAndSearch {
         this.bindSearchBarListeners();
         this.bindDatePickerListeners();
         this.bindExportButton();
+        this.json_export_keys;
     }
     loadJSON(){
         var json_data = [];
@@ -54,18 +55,23 @@ class OutputAndSearch {
         $("#datepicker").datepicker();
         $("#datepicker").change(() => { //Couldn't return value from datepicker onSelect, so I just make the search function run whenever the input value changes
             this.searchForDate(this.json_array, $("#datepicker").val());
+            $("#searchbar").val($("#datepicker").val()); //So can be used as export filenames
+            this.json_export_keys = [$("#datepicker").val()];
         });
         $("#datepicker").keyup((e) => {
             var code = e.keyCode || e.which; //Get code of pressed keyboard key
             if ($("#datepicker").val() != ""){
                 this.searchForDate(this.json_array, $("#datepicker").val());
+                this.json_export_keys = [$("#datepicker").val()];
             } else if (code == 8){ //8 = backspace/delete
                 $("#table_body").empty(); //Prevents bug in which last search entry appeared at top of cleared list as a duplicate
                 $("#datepicker").empty();
-                this.outputData(this.json_array);     
+                this.outputData(this.json_array); 
+                this.json_export_keys = [$("#datepicker").val()];
             } else {
                 $("#datepicker").empty();
                 this.outputData(this.json_array);
+                this.json_export_keys = [$("#datepicker").val()];
             }
         });
     }
@@ -74,6 +80,7 @@ class OutputAndSearch {
         json_array.forEach((json_object) => {
             if (json_object["start date"].includes(date)){ //It's weird that includes() is returning partial dates. Don't look a gift horse in the mouth, but could that be?
                 this.createRow(json_object);
+                this.json_export_keys.push(date);
             }
         });
     }
@@ -172,21 +179,37 @@ class OutputAndSearch {
         });
     }
     outputData(json_array, search_term){
+        var json_export_keys = [];
         json_array.forEach((json_object) => { //Runs PER json object; translates to one row.
             if (search_term === undefined){
                 this.createRow(json_object);
+                json_export_keys.push(json_object["project"]);
             } else if (search_term != undefined){
                 var search_type = this.getSearchType(search_term);
                 var array_to_search = this.objectToSearchableArray(json_object);
                 if (this.searchForWordInArray(array_to_search, search_term, search_type)){
                     this.createRow(json_object);
+                    json_export_keys.push(json_object["project"]);
                 }
             }
         });
+        this.json_export_keys = json_export_keys;
+    }
+    exportKeysToQueryString(){
+        var query_string;
+        this.json_export_keys.forEach((key_in_array) => {
+            query_string = query_string + key_in_array + "+";
+        });
+        return query_string.substring(0, (query_string.length - 1)).replaceAll("undefined", "");
     }
     bindExportButton(){
-        $("#export_view").click(function(){
-            alert("Function not yet available!");
+        $("#export_view").click(() => {
+            if ($("#searchbar").val() === ""){
+                window.open(window.location.href + "export.html?filename=" + "all_data" + "&projects=" + this.exportKeysToQueryString(), "_blank");
+            } else {
+                window.open(window.location.href + 
+                    "export.html?filename=" + $("#searchbar").val().replaceAll('"', "").replaceAll(":", "_") + "&projects=" + this.exportKeysToQueryString(), "_blank");     
+            }
         });
     }
 }

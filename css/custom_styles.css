@@ -98,3 +98,8 @@ h1 {
         margin-right: 5.6px;
     }
 }
+@media only screen and (max-width: 1000px){
+    #main_heading {
+        margin-right: 60px;
+    }
+}
