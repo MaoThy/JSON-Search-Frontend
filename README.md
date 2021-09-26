@@ -1,7 +1,9 @@
 # JSON-Search-Frontend
-This is an interface for displaying information from an array of JSON objects. It includes a search function that will only display data rows that contain the letters typed in the search bar.
+My latest JavaScript project – an interface for displaying information from an array of JSON objects. It includes a search function that will only display data rows that contain the letters typed in the search bar, along with exact match and column search functionality, along with an option to export the current view as a beautiful HTML document. You can also search by date using an attractive date-picker built with jQuery UI.
 
-The search function is invoked every time a key is pressed while the search bar is in focus, resulting in a very responsive-feeling interface. The program will load JSON data from an external source (like an API) and then it will use JavaScript to create the table rows. It uses a custom Bootstrap theme and is fully responsive. It also includes a dark theme that can be toggled with a button at the top.
+The search function is invoked every time a key is pressed while the search bar is in focus, resulting in a very responsive-feeling interface. The program will load JSON data from an external source (like an API) and then it will use JavaScript to create the table rows.
+
+It uses a custom Bootstrap theme and is fully responsive. It also includes a dark theme that can be toggled with a button at the top.
 
 I wrote this program as an alternative to using the DataTables framework, something I found so inscrutable it gave me a migraine.
 
