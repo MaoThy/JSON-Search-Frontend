@@ -205,10 +205,15 @@ class OutputAndSearch {
     }
     bindExportButton(){
         $("#export_view").click(() => {
-            if ($("#searchbar").val() === ""){
-                window.open(window.location.href.replace("index.html", "") + "export.html?filename=" + "all_data" + "&projects=" + this.exportKeysToQueryString(), "_blank");
+            if (window.location.href.indexOf("#") != -1){ //Remove anchor from end of URL if present to not interfere with export URL
+                var this_page = window.location.href.substring(0, window.location.href.length - 1);
             } else {
-                window.open(window.location.href.replace("index.html", "") + 
+                var this_page = window.location.href;
+            }
+            if ($("#searchbar").val() === ""){
+                window.open(this_page.replace("index.html", "") + "export.html?filename=" + "all_data" + "&projects=" + this.exportKeysToQueryString(), "_blank");
+            } else {
+                window.open(this_page.replace("index.html", "") + 
                     "export.html?filename=" + $("#searchbar").val().replaceAll('"', "").replaceAll(":", "_") + "&projects=" + this.exportKeysToQueryString(), "_blank");     
             }
         });
