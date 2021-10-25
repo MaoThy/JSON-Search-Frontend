@@ -162,22 +162,23 @@ class OutputAndSearch {
         return "<a href='project_view.html?project=" + project_name + "'>" + project_name + "</a>";
     }
     createRow(json_object){
+        var table = document.getElementById("table_body");
         var tr = document.createElement("tr");
-        $("#table_body").append(tr);
-        var td;
         Object.keys(json_object).forEach((key) => {
-            td = document.createElement("td");
+            var td = document.createElement("td");
             if (key === "project"){
-                var link = this.getProjectLink(json_object[key]);
-                td.innerHTML = link;
-            } else {
-                td.innerHTML = json_object[key];
+                td.innerHTML = this.getProjectLink(json_object[key]);
+            } else if (key === "urgency") {
                 if (json_object[key] === "High"){
                     td.style.color = "red";
                 }
+                td.innerHTML = json_object[key];
+            } else {
+                td.innerHTML = json_object[key];
             }
-            $("#table_body").append(td);
+            tr.appendChild(td);
         });
+        table.appendChild(tr);
     }
     outputData(json_array, search_term){
         var json_export_keys = [];
