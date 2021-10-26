@@ -4,7 +4,7 @@ $("document").ready(function(){
 
 class OutputAndSearch {
     constructor(){
-        this.data_source = "js/data.json/";
+        this.data_source = "js/data.json";
         this.ajax_tries = 1;
         this.json_array = [];
         this.loadJSON();
@@ -60,6 +60,7 @@ class OutputAndSearch {
         });
     }
     bindSearchBarListeners(){
+        $("#searchbar").prop("disabled", false);
         $("#searchbar").keyup((e) => {
             if ($("#searchbar").val() === ""){
                 $("#table_body").empty();
@@ -74,6 +75,7 @@ class OutputAndSearch {
         });
     }
     bindDatePickerListeners(){
+        $("#datepicker").prop("disabled", false);
         $("#datepicker").datepicker();
         $("#datepicker").change(() => { //Couldn't return value from datepicker onSelect, so I just make the search function run whenever the input value changes
             this.searchForDate(this.json_array, $("#datepicker").val());
@@ -227,6 +229,7 @@ class OutputAndSearch {
         return query_string.substring(0, (query_string.length - 1)).replaceAll("undefined", ""); //Removes undefined entries from returned query string and removes the + on the end that shouldn't be there
     }
     bindExportButton(){
+        $("#export_view").prop("disabled", false);
         $("#export_view").click(() => {
             if (window.location.href.indexOf("#") != -1){ //Remove anchor from end of URL if present to not interfere with export URL
                 var this_page = window.location.href.substring(0, window.location.href.length - 1);
