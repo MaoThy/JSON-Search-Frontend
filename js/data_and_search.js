@@ -4,7 +4,7 @@ $("document").ready(function(){
 
 class OutputAndSearch {
     constructor(){
-        this.data_source = "js/data.json";
+        this.data_source = "js/data.json/";
         this.ajax_tries = 1;
         this.json_array = [];
         this.loadJSON();
@@ -20,18 +20,18 @@ class OutputAndSearch {
             error: function(xhr){
                 if (this.ajax_tries <= 3){
                     this.ajax_tries++;
-                    $("#table_body").html("<p>Could not fetch data. Retrying in 3...</p>");
+                    $("#table_body").html("<p style='color:red'>Could not fetch data. Retrying in 3...</p>");
                     setTimeout(() => {
-                        $("#table_body").html("<p>Could not fetch data. Retrying in 2...</p>");
+                        $("#table_body").html("<p style='color:red'>Could not fetch data. Retrying in 2...</p>");
                     }, 1000);
                     setTimeout(() => {
-                        $("#table_body").html("<p>Could not fetch data. Retrying in 1...</p>");
+                        $("#table_body").html("<p style='color:red'>Could not fetch data. Retrying in 1...</p>");
                     }, 2000);
                     setTimeout(() => {
                         this.loadJSON();
                     }, 3000);
                 } else {
-                    $("#table_body").html("Couldn't fetch data, error: " + xhr.status + ".");
+                    $("#table_body").html("<p style='color:red'>Couldn't fetch data, error: " + xhr.status + ".</p>");
                 }
             },
             success: function(json) {
