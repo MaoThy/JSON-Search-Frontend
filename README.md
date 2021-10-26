@@ -7,8 +7,6 @@ It uses a custom Bootstrap theme and is fully responsive. It also includes a dar
 
 I wrote this program as an alternative to using the DataTables framework, something I found so inscrutable it gave me a migraine.
 
-A future version of the program will remove as much jQuery as possible, since most of the jQuery code is for rapid-prototyping purposes only.
-
 # Features
 
 - Partial search – search for entries in the JSON data by just typing a few letters into the search bar. Any entries that contain those letters will be immediately returned as rows inside the interface. All searches are case-insensitive, meaning that typing, for example, 'bankstown' will return entries that contain 'Bankstown'.
