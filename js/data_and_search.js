@@ -4,26 +4,48 @@ $("document").ready(function(){
 
 class OutputAndSearch {
     constructor(){
-        this.json_array = this.loadJSON();
-        this.outputData(this.json_array);
-        this.json_keys = this.getJSONKeys(this.json_array[0]);
-        this.outputKeysAsTableHeadings(this.json_keys);
-        this.bindSearchBarListeners();
-        this.bindDatePickerListeners();
-        this.bindExportButton();
-        this.json_export_keys;
+        this.data_source = "js/data.json";
+        this.ajax_tries = 1;
+        this.json_array = [];
+        this.loadJSON();
     }
     loadJSON(){
-        var json_data = [];
+        $("#table_body").empty();
+        $("#table_body").html("<p>Fetching data from " + this.data_source + "...</p>");
         $.ajax({
-            url: "js/data.json",
+            url: this.data_source,
             async: false,
             dataType: "json",
+            context: this,
+            error: function(xhr){
+                if (this.ajax_tries <= 3){
+                    this.ajax_tries++;
+                    $("#table_body").html("<p>Could not fetch data. Retrying in 3...</p>");
+                    setTimeout(() => {
+                        $("#table_body").html("<p>Could not fetch data. Retrying in 2...</p>");
+                    }, 1000);
+                    setTimeout(() => {
+                        $("#table_body").html("<p>Could not fetch data. Retrying in 1...</p>");
+                    }, 2000);
+                    setTimeout(() => {
+                        this.loadJSON();
+                    }, 3000);
+                } else {
+                    $("#table_body").html("Couldn't fetch data, error: " + xhr.status + ".");
+                }
+            },
             success: function(json) {
-                json_data = json;
+                $("#table_body").empty();
+                this.json_array = json;
+                this.outputData(this.json_array);
+                this.json_keys = this.getJSONKeys(this.json_array[0]);
+                this.outputKeysAsTableHeadings(this.json_keys);
+                this.bindSearchBarListeners();
+                this.bindDatePickerListeners();
+                this.bindExportButton();
+                this.json_export_keys;
             }
         });
-        return json_data;
     }
     getJSONKeys(json_object){
         var key_array = Object.keys(json_object);
